@@ -1,12 +1,13 @@
 {
-  "name": "王者TI",
+  "name": "wangzhe-ti",
   "version": "1.0.0",
   "description": "王者荣耀风格的人格测试应用 - 寻找你的本命英雄",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "vercel-build": "vite build"
   },
   "keywords": ["王者荣耀", "MBTI", "人格测试"],
   "author": "",
