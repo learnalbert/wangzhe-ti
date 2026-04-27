@@ -1,0 +1,18 @@
+{
+    "claudeCode.environmentVariables": [
+
+   
+    {
+        "name": "ANTHROPIC_AUTH_TOKEN",
+        "value": "sk-7mrNLo3mGtyDx1N2HtKIrrr09JXcC5RdVvousNbw10heFky9"
+    },
+    {
+        "name": "ANTHROPIC_BASE_URL",
+        "value": "https://yunwu.ai"
+    },
+    {
+        "name": "ANTHROPIC_MODEL",
+        "value": "claude-opus-4-7"
+    }
+]
+}
