@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>王者TI - 寻找你的本命英雄</title>
+  <link rel="stylesheet" href="./src/style.css">
+</head>
+<body>
+  <div class="app-container">
+    <div class="bg-effects">
+      <div class="particles"></div>
+      <div class="glow-ring"></div>
+    </div>
+
+    <section id="page-intro" class="page active">
+      <div class="intro-content">
+        <div class="logo-container">
+          <div class="logo-icon">⚔️</div>
+          <h1 class="title">王者TI</h1>
+          <p class="subtitle">寻找你的本命英雄</p>
+        </div>
+        <div class="intro-description">
+          <p>25道灵魂拷问，唤醒你内心的王者</p>
+          <!-- <p>是掌控全局的法师，还是一击必杀的刺客？</p> -->
+          <p>答案，即将揭晓...</p>
+        </div>
+        <button id="btn-start" class="btn btn-primary btn-glow">
+          <span class="btn-text">开启试炼</span>
+          <span class="btn-shine"></span>
+        </button>
+      </div>
+    </section>
+
+    <section id="page-quiz" class="page">
+      <div class="quiz-header">
+        <div class="progress-container">
+          <div class="progress-bar">
+            <div id="progress-fill" class="progress-fill"></div>
+          </div>
+          <span id="progress-text" class="progress-text">1 / 25</span>
+        </div>
+      </div>
+      <div class="quiz-content">
+        <div class="question-card">
+          <div class="question-number">问题 <span id="q-current">1</span></div>
+          <h2 id="question-text" class="question-text">题目加载中...</h2>
+        </div>
+        <div id="options" class="options-container"></div>
+        <div class="quiz-footer">
+          <button id="btn-prev" class="btn btn-prev">← 上一题</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="page-result" class="page">
+      <div class="result-container">
+        <div class="result-header">
+          <div class="result-kicker">你的本命英雄</div>
+          <h1 id="hero-name" class="hero-name">英雄名称</h1>
+          <div id="hero-title" class="hero-title">英雄称号</div>
+        </div>
+        <div class="result-body">
+          <div class="hero-showcase">
+            <div class="hero-image-container">
+              <img id="hero-image" src="" alt="英雄图片" class="hero-image">
+              <div class="hero-image-glow"></div>
+            </div>
+          </div>
+          <div class="hero-info">
+            <div class="mbti-tag" id="mbti-tag">MBTI</div>
+            <p id="hero-description" class="hero-description">英雄描述...</p>
+            <div class="hero-stats">
+              <div class="stat-item">
+                <span class="stat-label">定位</span>
+                <span id="hero-role" class="stat-value">定位</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-label">难度</span>
+                <span id="hero-difficulty" class="stat-value">★★★</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="result-actions">
+          <button id="btn-restart" class="btn btn-secondary"><span>再测一次</span></button>
+          <button id="btn-share" class="btn btn-primary btn-glow"><span>分享结果</span></button>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script type="module" src="./src/main.js"></script>
+</body>
+</html>
