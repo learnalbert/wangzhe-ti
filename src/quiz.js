@@ -17,7 +17,7 @@ export function createQuiz(data, onComplete) {
   }
 
   function updateProgress() {
-    const total = 20 + (heroQuestions.length || 0)
+    const total = 24
     const pct = ((currentQuestion + 1) / total) * 100
     els.fill.style.width = pct + '%'
     els.text.textContent = `${currentQuestion + 1} / ${total}`
