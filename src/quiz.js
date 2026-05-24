@@ -17,9 +17,10 @@ export function createQuiz(data, onComplete) {
   }
 
   function updateProgress() {
-    const pct = ((currentQuestion + 1) / 25) * 100
+    const total = 20 + (heroQuestions.length || 0)
+    const pct = ((currentQuestion + 1) / total) * 100
     els.fill.style.width = pct + '%'
-    els.text.textContent = `${currentQuestion + 1} / 25`
+    els.text.textContent = `${currentQuestion + 1} / ${total}`
     els.qCurrent.textContent = currentQuestion + 1
     els.btnPrev.disabled = currentQuestion === 0
   }
@@ -98,9 +99,15 @@ export function createQuiz(data, onComplete) {
           })
         }
       } else {
-        const heroMatch = lastAnswer.match_hero || lastAnswer.scores?.hero
-        if (heroMatch) {
-          const heroName = heroNameMap[heroMatch] || heroMatch
+        if (lastAnswer.scores) {
+          Object.entries(lastAnswer.scores).forEach(([key, val]) => {
+            const heroName = heroNameMap[key] || key
+            if (heroScores[heroName] !== undefined) {
+              heroScores[heroName] = Math.max(0, heroScores[heroName] - val)
+            }
+          })
+        } else if (lastAnswer.match_hero) {
+          const heroName = heroNameMap[lastAnswer.match_hero] || lastAnswer.match_hero
           if (heroScores[heroName] !== undefined) {
             heroScores[heroName] = Math.max(0, heroScores[heroName] - 1)
           }
@@ -129,9 +136,15 @@ export function createQuiz(data, onComplete) {
         })
       }
     } else {
-      const heroMatch = option.match_hero || option.score?.hero
-      if (heroMatch) {
-        const heroName = heroNameMap[heroMatch] || heroMatch
+      if (option.score) {
+        Object.entries(option.score).forEach(([key, val]) => {
+          const heroName = heroNameMap[key] || key
+          if (heroScores[heroName] !== undefined) {
+            heroScores[heroName] += val
+          }
+        })
+      } else if (option.match_hero) {
+        const heroName = heroNameMap[option.match_hero] || option.match_hero
         heroScores[heroName] = (heroScores[heroName] || 0) + 1
       }
     }
@@ -153,7 +166,7 @@ export function createQuiz(data, onComplete) {
         })
 
         if (mbtiData.questions && mbtiData.questions.length > 0) {
-          heroQuestions = mbtiData.questions.slice(0, 5)
+          heroQuestions = mbtiData.questions
         } else {
           heroQuestions = generateHeroQuestions(heroes)
         }
@@ -175,7 +188,7 @@ export function createQuiz(data, onComplete) {
         console.error('无英雄数据:', mbtiType)
         onComplete({ mbtiType, hero: null, answers })
       }
-    } else if (currentPhase === 2 && currentQuestion >= 25) {
+    } else if (currentPhase === 2 && currentQuestion >= 20 + heroQuestions.length) {
       let bestHero = null
       let maxScore = -Infinity
       Object.entries(heroScores).forEach(([name, score]) => {
@@ -214,7 +227,7 @@ export function createQuiz(data, onComplete) {
         })
       }
     })
-    return questions.slice(0, 5)
+    return questions
   }
 
   function start() {
