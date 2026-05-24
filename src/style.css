@@ -107,3 +107,113 @@ body { font-family: 'Microsoft YaHei', sans-serif; background: var(--bg-dark); c
   .question-text { font-size: 18px; }
   .option-btn { padding: 16px 20px; }
 }
+
+/* 分享卡片（离屏渲染用） */
+.share-card {
+  position: fixed;
+  left: -9999px;
+  top: 0;
+  width: 540px;
+  background: linear-gradient(160deg, #14141f 0%, #1e1e2e 60%, #2a1f10 100%);
+  color: #fff;
+  font-family: 'Microsoft YaHei', sans-serif;
+}
+.share-card-inner {
+  padding: 36px 32px 28px;
+  border: 2px solid var(--border-gold);
+  border-radius: 18px;
+  box-shadow: var(--glow-gold);
+}
+.share-card-header { text-align: center; margin-bottom: 20px; }
+.share-card-kicker {
+  font-size: 16px;
+  color: var(--primary-gold);
+  letter-spacing: 4px;
+}
+.share-card-hero { position: relative; text-align: center; margin-bottom: 20px; }
+.share-card-hero-image {
+  width: 100%;
+  max-height: 520px;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 1px solid var(--border-gold);
+}
+.share-card-hero-name {
+  position: absolute;
+  left: 0; right: 0; bottom: 16px;
+  font-size: 40px;
+  font-weight: bold;
+  color: var(--primary-gold-light);
+  text-shadow: 0 2px 12px rgba(0,0,0,0.9);
+  letter-spacing: 6px;
+}
+.share-card-desc {
+  font-size: 16px;
+  line-height: 1.7;
+  color: #d8d8e0;
+  margin-bottom: 24px;
+  text-align: justify;
+}
+.share-card-footer {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border-subtle);
+}
+.share-card-qr {
+  width: 96px; height: 96px;
+  background: #fff;
+  padding: 6px;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+.share-card-cta-title {
+  font-size: 18px;
+  color: var(--primary-gold);
+  font-weight: bold;
+  margin-bottom: 6px;
+}
+.share-card-cta-sub {
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+/* 分享弹层 */
+.share-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+.share-modal[hidden] { display: none; }
+.share-modal-mask {
+  position: absolute; inset: 0;
+  background: rgba(0,0,0,0.85);
+  backdrop-filter: blur(6px);
+}
+.share-modal-content {
+  position: relative;
+  max-width: 420px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  max-height: 95vh;
+}
+.share-modal-image {
+  width: 100%;
+  max-height: 78vh;
+  object-fit: contain;
+  border-radius: 12px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+}
+.share-modal-tip {
+  color: var(--primary-gold-light);
+  font-size: 14px;
+  text-align: center;
+}

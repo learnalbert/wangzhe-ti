@@ -89,6 +89,37 @@
       </div>
     </section>
   </div>
+
+  <div id="share-card" class="share-card">
+    <div class="share-card-inner">
+      <div class="share-card-header">
+        <div class="share-card-kicker">王者TI · 我的本命英雄</div>
+      </div>
+      <div class="share-card-hero">
+        <img id="share-hero-image" class="share-card-hero-image" src="" alt="">
+        <div class="share-card-hero-name" id="share-hero-name"></div>
+      </div>
+      <p class="share-card-desc" id="share-hero-desc"></p>
+      <div class="share-card-footer">
+        <img class="share-card-qr" src="./qrcode.png" alt="二维码">
+        <div class="share-card-cta">
+          <div class="share-card-cta-title">扫码测测你的本命英雄</div>
+          <div class="share-card-cta-sub">24题 · 寻找属于你的王者</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="share-modal" class="share-modal" hidden>
+    <div class="share-modal-mask"></div>
+    <div class="share-modal-content">
+      <img id="share-image" class="share-modal-image" alt="分享图">
+      <p class="share-modal-tip">长按图片保存 / 右键另存为</p>
+      <button id="btn-share-close" class="btn btn-secondary"><span>关闭</span></button>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
   <script type="module" src="./src/main.js"></script>
 </body>
 </html>
